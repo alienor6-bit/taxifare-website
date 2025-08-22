@@ -5,7 +5,7 @@ import pandas as pd
 
 # TaxiFareModel front
 
-st.set_page_config(page_title="Taxi Fare Predictor", page_icon="🚕")
+st.set_page_config(page_title="Taxi Fare Predictor", page_icon="🚖")
 
 st.title("🚕 Taxi Fare Predictor")
 
@@ -28,10 +28,30 @@ st.markdown("Please enter the details of your taxi ride:")
 
 date = st.date_input("Date")
 time = st.time_input("Time")
-pickup_lng = st.number_input("Pickup Longitude", value=-73.9)
-pickup_lat = st.number_input("Pickup Latitude", value=40.7)
-dropoff_lng = st.number_input("Dropoff Longitude", value=-73.9)
-dropoff_lat = st.number_input("Dropoff Latitude", value=40.7)
+pickup_lng = st.number_input(
+    "Pickup Longitude",
+    value=-73.9731084,
+    format="%.8f",
+    step=0.000001
+)
+pickup_lat = st.number_input(
+    "Pickup Latitude",
+    value=40.7958402,
+    format="%.8f",
+    step=0.000001
+)
+dropoff_lng = st.number_input(
+    "Dropoff Longitude",
+    value=-73.9731084,
+    format="%.8f",
+    step=0.000001
+)
+dropoff_lat = st.number_input(
+    "Dropoff Latitude",
+    value=40.7958402,
+    format="%.8f",
+    step=0.000001
+)
 passengers = st.number_input("Passengers", value=1, min_value=1, max_value=6)
 
 if st.button("Predict"):
@@ -75,4 +95,4 @@ df_points = pd.DataFrame([
 ])
 
 #center_lat = (float(pickup_lat)+float(pickup_lng))/2
-st.map(df_points, latitude = 'lat', longitude = 'long')
+st.map(df_points, latitude = 'lat', longitude = 'long', zoom = 12)
